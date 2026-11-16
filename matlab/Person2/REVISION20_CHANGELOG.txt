@@ -1,0 +1,23 @@
+REVISION 20 CHANGELOG
+=====================
+
+Only functional estimator change:
+- Every valid raw Nelder-Mead endpoint that beats the current global best
+  ML objective is now analytically LM-polished.
+- Previously, polishing also required the endpoint to improve its own
+  seed by a fixed threshold. This could leave a globally winning endpoint
+  unpolished even though the analytic LM solver could potentially improve it.
+- The LM result is retained only if its valid unregularized ML objective
+  is strictly lower than the raw endpoint.
+
+Preserved:
+- Person 1 TX/RX files are not included or modified.
+- apply_fractional_doppler_channel.m unchanged from Revision 19.
+- fractional_doppler_dictionary.m unchanged from Revision 19.
+- Same channel model, dictionary grid, training setup, objective,
+  condition gates, final gain ridge, and all search/refinement budgets.
+- Evaluator and test-driver logic unchanged apart from revision labels.
+- Installation checker renamed to check_revision20_installation.
+
+No MATLAB runtime was available. Performance claims require the user's
+same-seed Revision 19 vs Revision 20 run.
